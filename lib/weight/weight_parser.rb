@@ -17,9 +17,9 @@ class WeightParser
 
     return ZERO_WEIGHT if amount.nil?
 
-    amount.gsub!(/^(-)?(0[,.]\d\d)\d+$/, '\1\2\3')
+    amount.gsub!(/^(-)?(0[,.]\d\d)\d+$/, '\1\2')
 
-    segments = amount.scan(/^(.*?)(?:[\.\,](\d{1,2}))?$/).first
+    segments = amount.scan(/^(.*?)(?:[\.\,](\d{1,3}))?$/).first
 
     return ZERO_WEIGHT if segments.empty?
 

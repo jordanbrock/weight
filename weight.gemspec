@@ -5,7 +5,7 @@ require 'weight/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "weight"
-  spec.version       = "0.0.1"
+  spec.version       = "0.0.2"
   spec.authors       = ["Jordan Brock"]
   spec.email         = ["jordan@brock.id.au"]
   spec.summary       = %q{stores weight values as a big decimal}
