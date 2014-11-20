@@ -13,7 +13,7 @@ module WeightColumn
           end
 
           define_method("#{name}_before_type_cast") do
-            send(name) && sprintf("%.2f", send(name))
+            send(name) && sprintf("%.3f", send(name))
           end
 
           define_method("#{name}=") do |value|

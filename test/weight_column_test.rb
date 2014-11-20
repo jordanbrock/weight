@@ -38,4 +38,10 @@ class WeightColumnTest < MiniTest::Test
     m = WeightRecord.new(ordered: true)
     assert_equal nil, m.ordered
   end
+
+  def test_addition_of_weight_columns
+    m = WeightRecord.new(ordered: 100)
+    n = WeightRecord.new(ordered: 20)
+    assert_equal Weight.new(120), n.ordered + m.ordered
+  end
 end
