@@ -155,8 +155,8 @@ class Weight
     remainder = grams % num
     result = []
 
-    num.times do |i|
-      result[i] = index < remainder ? high : low
+    num.times do |index|
+      result[index] = index < remainder ? high : low
     end
 
     return result
