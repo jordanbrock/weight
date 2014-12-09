@@ -163,7 +163,7 @@ class Weight
   end
 
   def allocate(splits)
-    allocations = split.inject(0.0) {|sum| sum += 1 }
+    allocations = splits.inject(0.0) {|sum, i| sum += i }
     raise ArgumentError, "splits add to more than 100%" if allocations > 1.0
 
     left_over = grams

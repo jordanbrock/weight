@@ -112,4 +112,26 @@ class WeightTest < MiniTest::Test
   def test_comparable_with_non_weight_objects
     refute @weight == nil
   end
+
+  def test_allocate_does_nothing_split_one_way
+    assert_equal [Weight.new(5)], Weight.new(5).allocate([1])
+  end
+
+  def test_allocation_does_not_lose_grams
+    weights = Weight.new(0.05).allocate([0.3,0.7])
+    assert_equal Weight.new(0.015), weights[0]
+    assert_equal Weight.new(0.035), weights[1]
+  end
+
+  def test_split_gives_1_to_each_split
+    assert_equal [Weight.new(1), Weight.new(1)], Weight.new(2).split(2)
+  end
+
+  def test_split_a_kilo
+    weights = Weight.new(1).split(3)
+
+    assert_equal weights[0], Weight.new(0.334)
+    assert_equal weights[1], Weight.new(0.333)
+    assert_equal weights[2], Weight.new(0.333)
+  end
 end
