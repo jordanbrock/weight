@@ -25,8 +25,16 @@ class WeightTest < MiniTest::Test
     assert_equal Weight.new(0.000), @weight
   end
 
-  def test_to_s_should_return_two_decimals
+  def test_to_s_should_return_three_decimals
     assert_equal "0.000", @weight.to_s
+  end
+
+  def test_to_s_with_decimal_count_should_return_correct_string
+    assert_equal "0.0", @weight.to_s(1)
+  end
+
+  def test_to_s_should_round_decimals
+    assert_equal "1.4", Weight.new(1.3678).to_s(1)
   end
 
   def test_construct_with_fixnum

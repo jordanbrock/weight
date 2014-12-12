@@ -116,8 +116,9 @@ class Weight
     value.to_f
   end
 
-  def to_s
-    sprintf("%.3f", value.to_f)
+  def to_s(number_of_decimals = nil)
+    return sprintf("%.3f", value.to_f) if number_of_decimals.nil?
+    return sprintf("%.#{number_of_decimals}f", value.to_f)
   end
 
   def to_json(options={})
