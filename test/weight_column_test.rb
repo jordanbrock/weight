@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class WeightRecord < ActiveRecord::Base
   weight_column :ordered
@@ -26,7 +26,7 @@ class WeightColumnTest < MiniTest::Test
 
   def test_typecast_blank_to_nil
     m = WeightRecord.new(ordered: "")
-    assert_equal m.ordered, nil
+    assert_nil m.ordered
   end
 
   def test_typecase_invalid_string_to_empty
@@ -36,7 +36,7 @@ class WeightColumnTest < MiniTest::Test
 
   def test_typecast_invalid_value_to_nil
     m = WeightRecord.new(ordered: true)
-    assert_equal nil, m.ordered
+    assert_nil m.ordered
   end
 
   def test_addition_of_weight_columns

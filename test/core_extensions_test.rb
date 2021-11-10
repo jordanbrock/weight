@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class CoreExtensionsTest < MiniTest::Test
   def setup
@@ -31,7 +31,7 @@ class CoreExtensionsTest < MiniTest::Test
   end
 
   def test_big_decimal
-    value = BigDecimal.new("1.23")
+    value = BigDecimal("1.23")
     weight = Weight.new("1.23")
 
     assert_equal weight, value.to_weight

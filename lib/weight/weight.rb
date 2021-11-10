@@ -1,5 +1,5 @@
-require 'bigdecimal'
-require 'bigdecimal/util'
+require "bigdecimal"
+require "bigdecimal/util"
 
 class Weight
   include Comparable
@@ -29,16 +29,16 @@ class Weight
     Weight.new(value - other.to_weight.value)
   end
 
-  def *(numeric)
-    Weight.new(value * numeric)
+  def *(other)
+    Weight.new(value * other)
   end
 
-  def /(numeric)
+  def /(other)
     raise "[Weight] Dividing weight objects can lose grams. Use #split instead"
   end
 
   def inspect
-    "#<#{self.class} value:#{self.to_s}>"
+    "#<#{self.class} value:#{self}>"
   end
 
   def ==(other)
@@ -118,13 +118,13 @@ class Weight
 
   def to_s(number_of_decimals = nil)
     return sprintf("%.3f", value.to_f) if number_of_decimals.nil?
-    return sprintf("%.#{number_of_decimals}f", value.to_f)
+    sprintf("%.#{number_of_decimals}f", value.to_f)
   end
 
-  def to_json(options={})
+  def to_json(options = {})
     to_s
   end
-  
+
   def as_json(*args)
     to_s
   end
@@ -160,11 +160,11 @@ class Weight
       result[index] = index < remainder ? high : low
     end
 
-    return result
+    result
   end
 
   def allocate(splits)
-    allocations = splits.inject(0.0) {|sum, i| sum += i }
+    allocations = splits.inject(0.0) { |sum, i| sum += i }
     raise ArgumentError, "splits add to more than 100%" if allocations > 1.0
 
     left_over = grams
@@ -177,13 +177,13 @@ class Weight
 
     left_over.times { |i| amounts[i % amounts.length] += 1 }
 
-    return amounts.collect { |grams| Weight.from_grams(grams) }
+    amounts.collect { |grams| Weight.from_grams(grams) }
   end
 
-
   private
+
   def value_to_decimal(value)
-    if value.class == BigDecimal
+    if value.instance_of?(BigDecimal)
       value
     elsif value.respond_to?(:to_d)
       value.to_d

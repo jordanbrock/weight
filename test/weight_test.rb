@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class WeightTest < MiniTest::Test
   def setup
@@ -6,7 +6,6 @@ class WeightTest < MiniTest::Test
   end
 
   def teardown
-
   end
 
   def test_parser

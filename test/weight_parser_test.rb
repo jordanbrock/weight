@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class WeightParserTest < MiniTest::Test
   def setup
@@ -6,7 +6,6 @@ class WeightParserTest < MiniTest::Test
   end
 
   def teardown
-
   end
 
   def test_parse_empty_string
@@ -20,7 +19,7 @@ class WeightParserTest < MiniTest::Test
   def test_parse_single_digit_integer_string
     assert_equal Weight.new(1), @parser.parse("1")
   end
-  
+
   def test_parse_double_digit_integer_string
     assert_equal Weight.new(11), @parser.parse("11")
   end
